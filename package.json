@@ -1,6 +1,6 @@
 {
   "name": "get-registry",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Get registry config for current package manager",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
