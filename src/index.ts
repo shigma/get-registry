@@ -1,10 +1,10 @@
+import { exec, execSync } from 'child_process'
 import which from 'which-pm-runs'
-import spawn from 'execa'
 
 function get({ cwd }: get.Options = {}) {
   const agent = which()
   const key = agent?.name === 'yarn' && !agent?.version.startsWith('1.') ? 'npmRegistryServer' : 'registry'
-  const child = spawn(agent?.name || 'npm', ['config', 'get', key], { cwd })
+  const child = exec([agent?.name || 'npm', 'config', 'get', key].join(' '), { cwd })
   return new Promise<string>((resolve, reject) => {
     let stdout = ''
     child.on('exit', (code) => {
@@ -20,6 +20,12 @@ function get({ cwd }: get.Options = {}) {
 namespace get {
   export interface Options {
     cwd?: string
+  }
+
+  export function sync({ cwd }: get.Options = {}) {
+    const agent = which()
+    const key = agent?.name === 'yarn' && !agent?.version.startsWith('1.') ? 'npmRegistryServer' : 'registry'
+    return execSync([agent?.name || 'npm', 'config', 'get', key].join(' '), { cwd }).toString().trim()
   }
 }
 
