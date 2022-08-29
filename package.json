@@ -1,7 +1,7 @@
 {
   "name": "get-registry",
   "version": "0.1.0",
-  "description": "Get registry config for package managers",
+  "description": "Get registry config for current package manager",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -26,6 +26,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
+    "execa": "^5.1.1",
     "which-pm-runs": "^1.1.0"
   },
   "devDependencies": {
