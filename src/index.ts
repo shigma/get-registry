@@ -4,7 +4,8 @@ import which from 'which-pm-runs'
 function get({ cwd }: get.Options = {}) {
   const agent = which()
   const key = agent?.name === 'yarn' && !agent?.version.startsWith('1.') ? 'npmRegistryServer' : 'registry'
-  const child = exec([agent?.name || 'npm', 'config', 'get', key].join(' '), { cwd })
+  let cliName = agent?.name === 'deno' ? 'npm' : agent?.name || npm
+  const child = exec([cliName, 'config', 'get', key].join(' '), { cwd })
   return new Promise<string>((resolve, reject) => {
     let stdout = ''
     child.on('exit', (code) => {
