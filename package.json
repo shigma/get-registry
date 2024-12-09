@@ -1,6 +1,6 @@
 {
   "name": "get-registry",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Get registry config for current package manager",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,8 +29,8 @@
     "which-pm-runs": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^18.7.13",
+    "@types/node": "^22.10.1",
     "@types/which-pm-runs": "^1.0.0",
-    "typescript": "^4.8.2"
+    "typescript": "^5.7.2"
   }
 }
